@@ -59,16 +59,17 @@ public class ConexionTester extends JFrame {
         // aqui establecemos el tamaño de nuestro campo de resultado, donde se va a ver el texto luego de que demos click en el boton
         areaResultado = new JTextArea(8, 20);
         areaResultado.setEditable(false);
-
+        // en esta linea pusimos una funcion de scroll para podernos mover de arriba abajo en nuestro panel
         JScrollPane scrollResultado = new JScrollPane(areaResultado);
-
+        // aqui le damos una apariecnia a nuestro panel para que quede visiblemente mas agradable
         JPanel panelSuperior = new JPanel(new BorderLayout(10, 10));
         panelSuperior.add(panelFormulario, BorderLayout.CENTER);
         panelSuperior.add(conectar, BorderLayout.SOUTH);
-
+        // en esta linea agregamos a nuestra venta cada una de la funciones ya declaradas anteriormente
         add(panelSuperior, BorderLayout.NORTH);
         add(scrollResultado, BorderLayout.CENTER);
-
+        // aqui es donde le damos vida a nuestro boton al aplicarle la accion al boton de lo que debe de realizar y las respuestas que nos deben generar
+        // creamos variables para usar los campos de url, usuario y contraseña y usamos metodos del JFrame para poder interectuar con la ventana
         conectar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -88,7 +89,9 @@ public class ConexionTester extends JFrame {
 
 
     }
-
+    // aqui es donde hacemos las lineas de codigo para poder comprobar la conexion exitosa a nuestra base de datos con un metodo
+    // probarConexionBD el cual le pasamos parametros de url, usuario, contrasenia, que luego dentro de un try validamos que si se conecten
+    // correctamente o si no que ron arroje una excepcion
     private void probarConexionBD(String url, String usuario, String contrasenia) {
         try {
 
@@ -118,7 +121,7 @@ public class ConexionTester extends JFrame {
             areaResultado.setForeground(Color.RED); // Texto en Rojo
         }
     }
-
+// por ultimo tenemos el metodo main para poder llamar nuestra clase principal y probar el funcionamiento
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() ->{
             new ConexionTester().setVisible(true);
